@@ -722,7 +722,7 @@
 	<windows.h>
 	<GL/glut.h>
 
-1478853932 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\planeflock.cpp
+1479960048 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\planeflock.cpp
 	<stdlib.h>
 	<stdio.h>
 	"planeflock.h"
@@ -730,6 +730,7 @@
 	"plane.h"
 	"HeavyPlane.h"
 	"LightPlane.h"
+	"RedTriPlane.h"
 	<typeinfo>
 	<GL/glut.h>
 
@@ -740,7 +741,7 @@
 1478781560 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\factory.h
 	"plane.h"
 
-1479959985 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\main.cpp
+1479986057 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\main.cpp
 	<windows.h>
 	<GLUT/glut.h>
 	<GL/glut.h>
@@ -750,4 +751,12 @@
 	"factory.h"
 	"plane.h"
 	"planeflock.h"
+
+1479959985 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\redtriplane.h
+	"Plane.h"
+
+1479959985 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\redtriplane.cpp
+	"RedTriPlane.h"
+	<windows.h>
+	<GL/glut.h>
 

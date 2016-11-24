@@ -211,18 +211,15 @@ static void key(unsigned char key, int x, int y)
             exit(0);
             break;
 
-        /*case '+':
-            slices++;
-            stacks++;
+        case 'l':
+            Mission1.LaserShoot();
             break;
 
-        case '-':
-            if (slices>3 && stacks>3)
-            {
-                slices--;
-                stacks--;
-            }
-            break;*/
+        case 'e':
+            Mission1.EMPShoot();
+            break;
+        case 's':
+            Mission1.lowSpeedAttack();
     }
     glutPostRedisplay();
 }
@@ -248,7 +245,7 @@ static void tmrProduceLightPlanes(int value) //每1秒生成3架重型飞机
     glutTimerFunc(1000, tmrProduceLightPlanes, value);
 }
 
-static void tmrLaserAttack(int value) //激光攻击，0.5秒1次
+/*static void tmrLaserAttack(int value) //激光攻击，0.5秒1次
 {
     Mission1.LaserShoot();
     glutTimerFunc(500, tmrLaserAttack, value);
@@ -261,17 +258,17 @@ static void tmrEMPAttack(int value) //EMP攻击，2秒1次
     //Mission1.RemoveDeadPlanes();
     //Mission1.PrintPlanes();
     glutTimerFunc(2000, tmrEMPAttack, value);
-}
+}*/
 static void tmrProduceRedTriPlanes(int value)
 {
     Mission1.addRedTriPlane(1);
-    glutTimerFunc(5000,tmrProduceRedTriPlanes,value);
+    glutTimerFunc(2000,tmrProduceRedTriPlanes,value);
 }
-static void tmrLowSpeedAttack(int value)//减速弹攻击，5秒一次
+/*static void tmrLowSpeedAttack(int value)//减速弹攻击，5秒一次
 {
     Mission1.lowSpeedAttack();
     glutTimerFunc(5000,tmrLowSpeedAttack,value);
-}
+}*/
 
 /*const GLfloat light_ambient[]  = { 0.0f, 0.0f, 0.0f, 1.0f };
 const GLfloat light_diffuse[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
@@ -325,8 +322,8 @@ int main(int argc, char *argv[])
     glutTimerFunc(2000,tmrProduceHeavyPlanes,1);
     glutTimerFunc(1000,tmrProduceLightPlanes,2);
     glutTimerFunc(5000,tmrProduceRedTriPlanes,5);
-    glutTimerFunc(500,tmrLaserAttack,3);//0.5秒1次
-    glutTimerFunc(2000,tmrEMPAttack,4);//2秒1次
+    //glutTimerFunc(500,tmrLaserAttack,3);//0.5秒1次
+    //glutTimerFunc(2000,tmrEMPAttack,4);//2秒1次
     //glutTimerFunc(5000,tmrLowSpeedAttack,5);//5秒1次
     glutMainLoop();
     return EXIT_SUCCESS;
