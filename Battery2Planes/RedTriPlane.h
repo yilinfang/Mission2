@@ -1,23 +1,21 @@
-#ifndef LIGHTPLANE_H
-#define LIGHTPLANE_H
+#ifndef REDTRIPLANE_H_INCLUDED
+#define REDTRIPLANE_H_INCLUDED
 
 #include "Plane.h"
 
 
-class LightPlane : public Plane
+class RedTriPlane : public Plane
 {
     public:
-        LightPlane();
-        virtual ~LightPlane();
+        RedTriPlane();
+        virtual ~RedTriPlane();
         virtual void Display();
         void LaserAttack();
         void EMPAttack();
         void lowSpeedAttack();
         void Init();
-
     protected:
-
     private:
 };
 
-#endif // LIGHTPLANE_H
+#endif // REDTRIPLANE_H_INCLUDED

@@ -17,8 +17,8 @@ void HeavyPlane::Init()
 }
 void HeavyPlane::Display()
 {
-    glColor3f(1.0f,0.0f,0.0f);
-    glPointSize(8);
+    glColor3f(0.0f,0.0f,1.0f);
+    glPointSize(5);
     glBegin(GL_POINTS);
     glVertex2f(ctPos.x,ctPos.y);
     glEnd();
@@ -30,6 +30,10 @@ void HeavyPlane::LaserAttack()
 void HeavyPlane::EMPAttack()
 {
     hp -= 50;
+}
+void HeavyPlane::lowSpeedAttack()
+{
+    speed=speed/2;
 }
 HeavyPlane::~HeavyPlane()
 {

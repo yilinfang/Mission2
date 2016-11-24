@@ -5,6 +5,7 @@
 #include "plane.h"
 #include "HeavyPlane.h"
 #include "LightPlane.h"
+#include "RedTriPlane.h"
 #include <typeinfo>
 #include <GL/glut.h>
 
@@ -105,7 +106,20 @@ void PlaneFlock::addLightPlane(int n) //Ìí¼Ón¼ÜÇáÐÍ·É»ú
     }
     mt.UnLock();
 }
-
+void PlaneFlock::addRedTriPlane(int n) //Ìí¼Ón¼ÜºìÈý½Ç·É»ú
+{
+    int i=0;
+    PlaneNode*p;
+    mt.Lock();
+    while(i<n)
+    {
+        p = getRedTriFromDead();
+        p->next = liveHead->next;
+        liveHead->next = p;
+        i++;
+    }
+    mt.UnLock();
+}
 PlaneNode*PlaneFlock::getHeavyFromDead()//´ÓdeadHeadµÃµ½Ò»¼ÜÖØÐÍ·É»ú,Í¬Ê±´ÓÁ´±íÖÐÉ¾³ý;Èç¹ûÃ»ÓÐÔò·µ»ØNULL
 {
     mt.Lock();
@@ -133,6 +147,33 @@ PlaneNode*PlaneFlock::getHeavyFromDead()//´ÓdeadHeadµÃµ½Ò»¼ÜÖØÐÍ·É»ú,Í¬Ê±´ÓÁ´±íÖ
     p->pdata= new HeavyPlane();
     return p; //´´½¨Ò»¸öÐÂµÄ
 
+}
+PlaneNode*PlaneFlock::getRedTriFromDead()//´ÓdeadHeadµÃµ½Ò»¼ÜºìÈý½Ç·É»ú,Í¬Ê±´ÓÁ´±íÖÐÉ¾³ý;Èç¹ûÃ»ÓÐÔò·µ»ØNULL
+{
+    mt.Lock();
+    PlaneNode*prev=deadHead;
+    PlaneNode*current=prev->next;
+
+    while(current!=NULL)
+    {
+        if(typeid(*current->pdata)==typeid(RedTriPlane))  //ÅÐ±ðÊÇÄÄÖÖ·É»úÀàÐÍ
+        {
+            //printf("find Heavy Plane\n");
+            prev->next = current->next;//É¾³ý¸Ã½Úµã
+            current->pdata->Init();//»Ö¸´³õÊ¼Êý¾Ý
+            mt.UnLock();
+            return current;
+        }
+        else
+        {
+            prev = current;
+            current = current->next;
+        }
+    }
+    mt.UnLock();
+    PlaneNode*p = new PlaneNode();
+    p->pdata= new RedTriPlane();
+    return p; //´´½¨Ò»¸öÐÂµÄ
 }
 bool PlaneFlock::PlaneWin()
 {
@@ -236,6 +277,17 @@ void PlaneFlock::EMPShoot()
     }
     mt.UnLock();
 
+}
+void PlaneFlock::lowSpeedAttack()
+{
+    mt.Lock();
+    PlaneNode*p=liveHead->next;
+    while(p!=NULL)
+    {
+        p->pdata->lowSpeedAttack();
+        p=p->next;
+    }
+    mt.UnLock();
 }
 
 void PlaneFlock::RemoveDeadPlanes()//´ÓliveHead ¶ÓÁÐÖÐÒÆ³ýhp<=0µÄ·É»úµ½deadHeadÖÐÈ¥

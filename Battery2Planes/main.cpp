@@ -244,7 +244,6 @@ static void tmrProduceHeavyPlanes(int value) //每2秒生成1架重型飞机
 }
 static void tmrProduceLightPlanes(int value) //每1秒生成3架重型飞机
 {
-
     Mission1.addLightPlane(3);
     glutTimerFunc(1000, tmrProduceLightPlanes, value);
 }
@@ -263,6 +262,16 @@ static void tmrEMPAttack(int value) //EMP攻击，2秒1次
     //Mission1.PrintPlanes();
     glutTimerFunc(2000, tmrEMPAttack, value);
 }
+static void tmrProduceRedTriPlanes(int value)
+{
+    Mission1.addRedTriPlane(1);
+    glutTimerFunc(5000,tmrProduceRedTriPlanes,value);
+}
+static void tmrLowSpeedAttack(int value)//减速弹攻击，5秒一次
+{
+    Mission1.lowSpeedAttack();
+    glutTimerFunc(5000,tmrLowSpeedAttack,value);
+}
 
 /*const GLfloat light_ambient[]  = { 0.0f, 0.0f, 0.0f, 1.0f };
 const GLfloat light_diffuse[]  = { 1.0f, 1.0f, 1.0f, 1.0f };
@@ -278,17 +287,17 @@ const GLfloat high_shininess[] = { 100.0f };*/
 
 int main(int argc, char *argv[])
 {
-    //while(frameNum<=2400){
-    glutInit(&argc, argv);
-    glutInitWindowSize(640,480);
-    glutInitWindowPosition(10,10);
-    glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
+        //while(frameNum<=2400){
+        glutInit(&argc, argv);
+        glutInitWindowSize(640,480);
+        glutInitWindowPosition(10,10);
+        glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 
-    glutCreateWindow("Battle Field");
+        glutCreateWindow("Battle Field");
 
-    glutReshapeFunc(resize);
-    glutDisplayFunc(display);
-    glutKeyboardFunc(key);
+        glutReshapeFunc(resize);
+        glutDisplayFunc(display);
+        glutKeyboardFunc(key);
 
     glutIdleFunc(idle);
 
@@ -315,8 +324,10 @@ int main(int argc, char *argv[])
     glMaterialfv(GL_FRONT, GL_SHININESS, high_shininess);*/
     glutTimerFunc(2000,tmrProduceHeavyPlanes,1);
     glutTimerFunc(1000,tmrProduceLightPlanes,2);
+    glutTimerFunc(5000,tmrProduceRedTriPlanes,5);
     glutTimerFunc(500,tmrLaserAttack,3);//0.5秒1次
     glutTimerFunc(2000,tmrEMPAttack,4);//2秒1次
+    //glutTimerFunc(5000,tmrLowSpeedAttack,5);//5秒1次
     glutMainLoop();
     return EXIT_SUCCESS;
     //}

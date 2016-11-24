@@ -33,14 +33,18 @@ public:
 
     void LaserShoot();//激光射击
     void EMPShoot();//EMP炸弹
+    void lowSpeedAttack();//减速弹攻击
     void RemoveDeadPlanes();//从liveHead 队列中移除hp<=0的飞机到deadHead中去
     PlaneNode*SearchNearestPlane();//寻找最近飞机返回
 
     void addHeavyPlane(int n); //添加n架重型飞机
     void addLightPlane(int n); //添加n架轻型飞机
+    void addRedTriPlane(int n);//添加n架红三角飞机
+
 
     PlaneNode*getHeavyFromDead();//从deadHead得到一架重型飞机,同时从链表中删除;如果没有则返回NULL
     PlaneNode*getLightFromDead();
+    PlaneNode*getRedTriFromDead();
     void addHeavyToDead(PlaneNode*p);//飞机p所指向的节点加入deadHead链表中去
 
     bool PlaneWin();

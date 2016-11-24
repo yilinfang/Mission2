@@ -13,6 +13,7 @@ class HeavyPlane : public Plane
         virtual ~HeavyPlane();
         void LaserAttack();
         void EMPAttack();
+        void lowSpeedAttack();
 
     protected:
 

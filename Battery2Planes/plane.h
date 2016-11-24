@@ -24,7 +24,8 @@ class Plane{
 public:
     Plane();
     virtual void LaserAttack()=0;//¼¤¹â¹¥»÷
-    virtual void EMPAttack()=0;//EMFÕ¨µ¯¹¥»÷
+    virtual void EMPAttack()=0;//EMPÕ¨µ¯¹¥»÷
+    virtual void lowSpeedAttack()=0;//¼õËÙµ¯¹¥»÷
     virtual ~Plane();
     virtual void Init();
     virtual void Display();

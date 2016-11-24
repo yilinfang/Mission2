@@ -34,6 +34,10 @@ void LightPlane::EMPAttack()
 {
     hp -= 50;
 }
+void LightPlane::lowSpeedAttack()
+{
+    speed=speed/2;
+}
 LightPlane::~LightPlane()
 {
     //dtor
