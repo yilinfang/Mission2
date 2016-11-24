@@ -52,7 +52,6 @@
 		<Unit filename="Mutex.h" />
 		<Unit filename="RedTriPlane.cpp" />
 		<Unit filename="RedTriPlane.h" />
-		<Unit filename="factory.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="plane.cpp" />
 		<Unit filename="plane.h" />

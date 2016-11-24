@@ -21,7 +21,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include"factory.h"
 #include"plane.h"
 #include"planeflock.h"
 
@@ -192,6 +191,7 @@ static void display(void)
 
 
     drawString("FPS:",winWidth-150,40);
+    drawString("Keyboard: Laser:l Emp:e Lowspeed:s",winWidth-600,400);
     WinOrLost();
     int in;
     in=getFPS();
@@ -226,9 +226,6 @@ static void key(unsigned char key, int x, int y)
 
 static void idle(void)
 {
-
-
-
     Mission1.UpdatePosition();
     Mission1.RemoveDeadPlanes();
     glutPostRedisplay();

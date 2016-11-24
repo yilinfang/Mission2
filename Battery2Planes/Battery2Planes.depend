@@ -741,7 +741,7 @@
 1478781560 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\factory.h
 	"plane.h"
 
-1479986057 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\main.cpp
+1479987248 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\main.cpp
 	<windows.h>
 	<GLUT/glut.h>
 	<GL/glut.h>
