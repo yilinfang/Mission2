@@ -14,6 +14,8 @@ void HeavyPlane::Init()
     //InitBase();
     setHp(100);
     setSpeed(-0.1f);
+    setlowSpeedState(FALSE);
+    setlowSpeedTime(0);
 }
 void HeavyPlane::Display()
 {
@@ -31,9 +33,23 @@ void HeavyPlane::EMPAttack()
 {
     hp -= 50;
 }
-void HeavyPlane::lowSpeedAttack()
+void HeavyPlane::lowSpeedAttack(TICK t)
 {
-    speed=speed/2;
+    if(!lowSpeedState){
+        speed=speed/2;
+        lowSpeedTime=t;
+        lowSpeedState=TRUE;
+    }
+    else lowSpeedTime = t;
+}
+void HeavyPlane::recoverSpeed(TICK t)
+{
+    if (lowSpeedState && (t - lowSpeedTime) >= 2000)
+    {
+        speed=2*speed;
+        lowSpeedTime=0;
+        lowSpeedState=false;
+    }
 }
 HeavyPlane::~HeavyPlane()
 {

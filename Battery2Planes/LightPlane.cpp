@@ -24,7 +24,8 @@ void LightPlane::Init()
      //InitBase();
      setSpeed(-0.2f);
      setHp(50);
-
+     setlowSpeedState(FALSE);
+     setlowSpeedTime(0);
 }
 void LightPlane::LaserAttack()
 {
@@ -34,9 +35,23 @@ void LightPlane::EMPAttack()
 {
     hp -= 50;
 }
-void LightPlane::lowSpeedAttack()
+void LightPlane::lowSpeedAttack(TICK t)
 {
-    speed=speed/2;
+    if (!lowSpeedState){
+        speed=speed/2;
+        lowSpeedState = TRUE;
+        lowSpeedTime = t;
+    }
+    else lowSpeedTime = t;
+}
+void LightPlane::recoverSpeed(TICK t)
+{
+    if(lowSpeedState && (t - lowSpeedTime) >= 2000)
+    {
+        speed=2*speed;
+        lowSpeedState=FALSE;
+        lowSpeedTime=0;
+    }
 }
 LightPlane::~LightPlane()
 {

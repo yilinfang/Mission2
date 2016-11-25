@@ -25,23 +25,29 @@ public:
     Plane();
     virtual void LaserAttack()=0;//激光攻击
     virtual void EMPAttack()=0;//EMP炸弹攻击
-    virtual void lowSpeedAttack()=0;//减速弹攻击
+    virtual void lowSpeedAttack(TICK t)=0;//减速弹攻击
+    virtual void recoverSpeed(TICK t)=0;
     virtual ~Plane();
     virtual void Init();
     virtual void Display();
     void setBirth(TICK t);
     void setSpeed(float t);
     void setHp(int t);
-    void UpdatePos();//根据当前时间计算当前位置
+    void setlowSpeedState(bool t);
+    void setlowSpeedTime(TICK t);
+    bool getlowSpeedState();
+    TICK getlowSpeedTime();
+    void UpdatePos(TICK dt);//根据当前时间计算当前位置
     Pos2D getPosition();
     float getSpeed();
     TICK getBirth();
     int getHp();
 
 protected:
+    bool lowSpeedState;
+    TICK lowSpeedTime;
     Pos2D stPos;  //飞机的起点
     Pos2D ctPos;  //当前位置
-
     TICK birth;//飞机的生成时间,通过getTickCount取得
     float speed;
     int hp;//血量

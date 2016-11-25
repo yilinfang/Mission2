@@ -12,7 +12,8 @@ class RedTriPlane : public Plane
         virtual void Display();
         void LaserAttack();
         void EMPAttack();
-        void lowSpeedAttack();
+        void lowSpeedAttack(TICK t);
+        void recoverSpeed(TICK t);
         void Init();
     protected:
     private:

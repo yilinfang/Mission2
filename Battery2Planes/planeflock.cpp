@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "planeflock.h"
-#include "factory.h"
 #include "plane.h"
 #include "HeavyPlane.h"
 #include "LightPlane.h"
@@ -64,14 +63,14 @@ void PlaneFlock::Release()//释放两个链表的节点空间
 
 }
 
-void PlaneFlock::UpdatePosition() //更新位置
+void PlaneFlock::UpdatePosition(TICK dt) //更新位置
 {
 
     mt.Lock();
     PlaneNode *p=liveHead->next;
     while(p!=NULL)
     {
-       p->pdata->UpdatePos();
+       p->pdata->UpdatePos(dt);
        p=p->next;
     }
     mt.UnLock();
@@ -183,7 +182,7 @@ bool PlaneFlock::PlaneWin()
           return true;
       return false;
 }
-PlaneNode*PlaneFlock::getLightFromDead()//从deadHead得到一架轻型重型飞机,同时从链表中删除;如果没有则返回NULL
+PlaneNode*PlaneFlock::getLightFromDead()//从deadHead得到飞机,同时从链表中删除;如果没有则返回NULL
 {
     mt.Lock();
     PlaneNode*prev=deadHead;
@@ -265,6 +264,7 @@ void PlaneFlock::LaserShoot()
         p->pdata->LaserAttack();
     mt.UnLock();
 }
+
 void PlaneFlock::EMPShoot()
 {
 
@@ -278,13 +278,26 @@ void PlaneFlock::EMPShoot()
     mt.UnLock();
 
 }
-void PlaneFlock::lowSpeedAttack()
+
+void PlaneFlock::lowSpeedAttack(TICK t)
 {
     mt.Lock();
     PlaneNode*p=liveHead->next;
     while(p!=NULL)
     {
-        p->pdata->lowSpeedAttack();
+        p->pdata->lowSpeedAttack(t);
+        p=p->next;
+    }
+    mt.UnLock();
+}
+
+void PlaneFlock::recoverSpeed(TICK t)
+{
+    mt.Lock();
+    PlaneNode*p=liveHead->next;
+    while(p!=NULL)
+    {
+        p->pdata->recoverSpeed(t);
         p=p->next;
     }
     mt.UnLock();

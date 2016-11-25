@@ -692,22 +692,22 @@
 1469391548 d:\mingw\include\oleidl.h
 	<objfwd.h>
 
-1479959985 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\heavyplane.cpp
+1480056574 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\heavyplane.cpp
 	"HeavyPlane.h"
 	<windows.h>
 	<GL/glut.h>
 
-1479954673 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\heavyplane.h
+1480056574 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\heavyplane.h
 	"plane.h"
 
-1479954673 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\plane.h
+1480056720 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\plane.h
 
-1479954673 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\lightplane.cpp
+1480056574 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\lightplane.cpp
 	"LightPlane.h"
 	<windows.h>
 	<GL/glut.h>
 
-1479954673 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\lightplane.h
+1480056573 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\lightplane.h
 	"Plane.h"
 
 1478437351 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\mutex.cpp
@@ -716,17 +716,16 @@
 1478437392 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\mutex.h
 	<windows.h>
 
-1478852046 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\plane.cpp
+1480005735 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\plane.cpp
 	<iostream>
 	"plane.h"
 	<windows.h>
 	<GL/glut.h>
 
-1479960048 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\planeflock.cpp
+1480057665 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\planeflock.cpp
 	<stdlib.h>
 	<stdio.h>
 	"planeflock.h"
-	"factory.h"
 	"plane.h"
 	"HeavyPlane.h"
 	"LightPlane.h"
@@ -734,28 +733,27 @@
 	<typeinfo>
 	<GL/glut.h>
 
-1479959985 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\planeflock.h
+1480056574 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\planeflock.h
 	"plane.h"
 	"mutex.h"
 
 1478781560 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\factory.h
 	"plane.h"
 
-1479987248 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\main.cpp
+1480056574 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\main.cpp
 	<windows.h>
 	<GLUT/glut.h>
 	<GL/glut.h>
 	<stdlib.h>
 	<stdio.h>
 	<time.h>
-	"factory.h"
 	"plane.h"
 	"planeflock.h"
 
-1479959985 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\redtriplane.h
+1480056573 c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\redtriplane.h
 	"Plane.h"
 
-1479959985 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\redtriplane.cpp
+1480056574 source:c:\users\hust leonardo fang\desktop\battery2planesv2\battery2planes\redtriplane.cpp
 	"RedTriPlane.h"
 	<windows.h>
 	<GL/glut.h>

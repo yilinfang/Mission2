@@ -24,7 +24,8 @@ void RedTriPlane::Init()
      //InitBase();
      setSpeed(-0.3f);
      setHp(150);
-
+     setlowSpeedState(FALSE);
+     setlowSpeedTime(0);
 }
 void RedTriPlane::LaserAttack()
 {
@@ -34,9 +35,22 @@ void RedTriPlane::EMPAttack()
 {
     hp -= 75;
 }
-void RedTriPlane::lowSpeedAttack()
+void RedTriPlane::lowSpeedAttack(TICK t)
 {
-    speed=speed/2;
+    if (!lowSpeedState){
+        lowSpeedState=TRUE;
+        speed=speed/2;
+        lowSpeedTime=t;
+    }
+    else lowSpeedTime=t;
+}
+void RedTriPlane::recoverSpeed(TICK t)
+{
+    if(lowSpeedState && (t - lowSpeedTime) >= 2000){
+        lowSpeedState=FALSE;
+        speed=speed*2;
+        lowSpeedTime = 0;
+    }
 }
 RedTriPlane::~RedTriPlane()
 {

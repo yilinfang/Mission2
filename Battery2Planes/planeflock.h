@@ -33,7 +33,8 @@ public:
 
     void LaserShoot();//激光射击
     void EMPShoot();//EMP炸弹
-    void lowSpeedAttack();//减速弹攻击
+    void lowSpeedAttack(TICK t);//减速弹攻击
+    void recoverSpeed(TICK t);
     void RemoveDeadPlanes();//从liveHead 队列中移除hp<=0的飞机到deadHead中去
     PlaneNode*SearchNearestPlane();//寻找最近飞机返回
 
@@ -54,7 +55,9 @@ public:
 
 
 
-    void UpdatePosition();
+    void UpdatePosition(TICK dt);
+
+
 
 
 

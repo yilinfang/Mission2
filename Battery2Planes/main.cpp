@@ -219,14 +219,18 @@ static void key(unsigned char key, int x, int y)
             Mission1.EMPShoot();
             break;
         case 's':
-            Mission1.lowSpeedAttack();
+            Mission1.lowSpeedAttack(GetTickCount());
     }
     glutPostRedisplay();
 }
 
 static void idle(void)
 {
-    Mission1.UpdatePosition();
+    static TICK lastTime = 0;
+    TICK tempTime = GetTickCount();
+    Mission1.recoverSpeed(tempTime);
+    Mission1.UpdatePosition(tempTime - lastTime);
+    lastTime=tempTime;
     Mission1.RemoveDeadPlanes();
     glutPostRedisplay();
 }

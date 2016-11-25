@@ -35,7 +35,14 @@ void Plane::setHp(int t)
 {
     hp=t;
 }
-
+void Plane::setlowSpeedState(bool t)
+{
+    lowSpeedState = t;
+}
+void Plane::setlowSpeedTime(TICK t)
+{
+    lowSpeedTime=t;
+}
 Pos2D Plane:: getPosition()
 {
     return ctPos;
@@ -53,9 +60,17 @@ int Plane::getHp()
     return hp;
 }
 
-void Plane::UpdatePos()//根据当前时间计算当前位置
+bool Plane::getlowSpeedState()
 {
-    ctPos.x = stPos.x + speed*(GetTickCount() - birth)/1000.0f;
+    return lowSpeedState;
+}
+TICK Plane::getlowSpeedTime()
+{
+    return lowSpeedTime;
+}
+void Plane::UpdatePos(TICK dt)//根据当前时间计算当前位置
+{
+    ctPos.x = ctPos.x + speed*dt/1000.0f;
 }
 
 
